@@ -1,11 +1,11 @@
 <div class="container">
+<div class="row">
+<div class="col-md-3 col-md-offset-4">
 <?php
 $attributes = array('class' => 'form-signin');?>
-<fieldset>
-<legend> Personal Information </legend>
 <?php
 echo form_open('login/create_member',$attributes);?>
-<h1 class="form-signin-heading"> Create an Account </h1>
+<h1 class="form-signin-heading"> Sign Up </h1>
 <?php
 $data = array(
               'name'        => 'first_name',
@@ -60,6 +60,6 @@ $data = array(
 
 echo form_submit($data);
 echo validation_errors('<p class="error">');?>
-</fieldset>
+</div> 
 </div>
-
+</div>

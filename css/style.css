@@ -38,3 +38,8 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+#owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}

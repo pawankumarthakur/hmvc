@@ -1,4 +1,5 @@
 <div class="container">
+<div class="row">
 <?php
 $attributes = array('class' => 'form-signin');
 echo form_open('login/validate_cred',$attributes);?>
@@ -25,7 +26,7 @@ $data = array(
             );
 
 echo form_submit($data);
-echo anchor('login/signup', 'Create Account');
+echo anchor('login/module_load', 'Create Account');
 ?>
 </div>
-
+</div>

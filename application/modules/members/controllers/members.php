@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Site extends CI_Controller {
+class Members extends MX_Controller {
 	public function __construct()
        {
             parent::__construct();
@@ -8,7 +8,9 @@ class Site extends CI_Controller {
 		
 	function members_area()
 	{
-		$this->load->view('members_area');
+		echo "Reached Members";
+		$data['main_content'] = 'dashboard';
+		$this->load->view('includes/template',$data);
 	}
 
 	function is_logged_in(){

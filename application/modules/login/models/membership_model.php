@@ -10,6 +10,16 @@ class Membership_model extends CI_Model{
 			return true;
 		}
 	}
+	
+	function validate_head(){
+		$this->db->where('username',$this->input->post('username1'));
+		$this->db->where('password',md5($this->input->post('password1')));
+		$query = $this->db->get('membership');
+		if($query->num_rows == 1)
+		{
+			return true;
+		}
+	}
 
 	function create_member(){
 		$new_member_insert_data = array(

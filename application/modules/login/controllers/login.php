@@ -1,6 +1,5 @@
 <?php
-
-class Login extends CI_Controller{
+class Login extends MX_Controller{
 
 	function index(){
 		$data['main_content']='login_form';
@@ -8,25 +7,31 @@ class Login extends CI_Controller{
 
 		
 	}
-
-	function validate_cred()
+function module_load()
+{
+	echo modules::run('members/members_area');
+}
+	function validate_cred_head()
 	{
 		$this->load->model('membership_model');
-		$query = $this->membership_model->validate();
+		$query = $this->membership_model->validate_head();
 		if($query)
 		{
 			$data = array(
-				'username' => $this->input->post('username') ,
+				'username' => $this->input->post('username1') ,
 				'is_logged_in' => true
 			 );
 			$this->session->set_userdata($data);
-			redirect('site/members_area');
+			//echo "Done";
+			//modules::run('members/members_area');
+			redirect('members/members_area');
 			}
 		else
 		{
-			$this->index();
+			redirect('home');
 		}
 	}
+	
 
 	function signup(){
 		$data['main_content'] = 'signup_form';
