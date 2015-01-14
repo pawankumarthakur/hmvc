@@ -34,8 +34,16 @@ $(document).ready(function() {
 </script>
 <script>
 function signin(){
-	alert("Sign In Button Clicked");
-}
+	$.ajax({
+    type: "POST",
+    url: "/login/validate_test",
+    data: { name: "John"},
+    dataType: "html",    
+    success: function (result) {
+      alert(result);
+    }
+	}); 
+	}
 </script>
 </head>
 <body>

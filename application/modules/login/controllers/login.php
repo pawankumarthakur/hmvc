@@ -7,9 +7,11 @@ class Login extends MX_Controller{
 
 		
 	}
-function module_load()
+function validate_test($data = null)
 {
-	echo modules::run('members/members_area');
+	echo "Hello World";
+	/*$data  = "success";
+	return $data;*/
 }
 	function validate_cred_head()
 	{
