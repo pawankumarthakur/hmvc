@@ -33,17 +33,12 @@ $(document).ready(function() {
 });
 </script>
 <script>
-function signin(){
-	$.ajax({
-    type: "POST",
-    url: "/login/validate_test",
-    data: { name: "John"},
-    dataType: "html",    
-    success: function (result) {
-      alert(result);
-    }
-	}); 
-	}
+  $(".btn-success").click(function(){
+  $.post("login/validate_test",
+  function(data,status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
+});
 </script>
 </head>
 <body>
@@ -89,7 +84,6 @@ echo form_password($data); ?>
               'name'        => 'Submit',
               'class'=> "btn btn-success", 
               'value'          => 'Sign In',
-			  'onclick' => 'signin()',
             );
 echo form_submit($data);?>            
 			<a href="<?php echo base_url()?>login/signup" class="btn btn-success">Sign Up</a>

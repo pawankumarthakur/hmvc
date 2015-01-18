@@ -2,7 +2,8 @@
       <div class="container">
         <div class="row">
           <div class="span12">
-            <h1>One Item with Image</h1>
+            <h1><?php// $is_logged_in = $this->session->userdata('is_logged_in');
+		//echo $is_logged_in; ?></h1>
           </div>
         </div>
       </div>

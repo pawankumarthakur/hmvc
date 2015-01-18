@@ -2,11 +2,37 @@
 class Login extends MX_Controller{
 
 	function index(){
+		$this->is_logged_in();
+		redirect('members/members_area');
+	}
+	function logout()
+{
+    $user_data = $this->session->all_userdata();
+        foreach ($user_data as $key => $value) {
+            if ($key != 'session_id' && $key != 'ip_address' && $key != 'user_agent' && $key != 'last_activity') {
+                $this->session->unset_userdata($key);
+            }
+        }
+    $this->session->sess_destroy();
+    redirect('default_controller');
+}
+	function login(){
 		$data['main_content']='login_form';
 		$this->load->view('includes/template',$data);
-
 		
 	}
+	function is_logged_in(){
+		$is_logged_in = $this->session->userdata('is_logged_in');
+
+		if(!isset($is_logged_in) || $is_logged_in != true)
+{
+	$data['main_content']='login_form';
+		$this->load->view('includes/template',$data);
+	}	
+	else{
+		redirect('members/dashboard');
+	}
+}
 function validate_test($data = null)
 {
 	echo "Hello World";
@@ -15,6 +41,7 @@ function validate_test($data = null)
 }
 	function validate_cred_head()
 	{
+		$this->is_logged_in();
 		$this->load->model('membership_model');
 		$query = $this->membership_model->validate_head();
 		if($query)
@@ -24,13 +51,13 @@ function validate_test($data = null)
 				'is_logged_in' => true
 			 );
 			$this->session->set_userdata($data);
-			//echo "Done";
+			
 			//modules::run('members/members_area');
-			redirect('members/members_area');
+			redirect('members/dashboard');
 			}
 		else
 		{
-			redirect('home');
+			return false;
 		}
 	}
 	
